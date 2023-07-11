@@ -9,6 +9,8 @@ async def async_generator():
         await asyncio.sleep(1)
         yield random.randint(0, 10)
 
-async def consume_async_generator():
+async def print_yielded_values():
     async for value in async_generator():
         print(value)
+
+asyncio.run(print_yielded_values())
