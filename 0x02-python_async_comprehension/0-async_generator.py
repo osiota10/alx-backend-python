@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
-'''Task 0's module.
-'''
-import asyncio
+""" a python module to loop 10 times """
 import random
+import asyncio
+from typing import Generator
 
-async def async_generator():
-    for _ in range(10):
+
+async def async_generator() -> Generator[float, None, None]:
+    """
+    async_generator - function to loop 10 times
+    Arguments:
+        no arguments
+    Returns:
+        nothing
+    """
+    for i in range(10):
         await asyncio.sleep(1)
-        yield random.randint(0, 10)
-
-async def consume_async_generator():
-    async for value in async_generator():
-        print(value)
-
-loop = asyncio.get_event_loop()
-loop.run_until_complete(consume_async_generator())
+        yield random.uniform(0, 10)
